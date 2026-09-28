@@ -1,0 +1,26 @@
+xdna1-npu-lab
+Copyright 2026 hnws
+
+This project is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Third-party material:
+
+- mlir_aie/whole_array.py is copied unchanged from AMD's mlir-aie project
+  (https://github.com/Xilinx/mlir-aie, v1.4.3,
+  programming_examples/basic/matrix_multiplication/whole_array), and
+  mlir_aie/npu_gemm.py is derived from it.
+  Copyright (C) 2024-2026 Advanced Micro Devices, Inc.
+  Licensed under the Apache License v2.0 with LLVM Exceptions.
+
+- yolonas_int8/nas_raw.py ports the YOLO-NAS raw-head decode and the XINT8
+  quantization recipe from Frigate pull request #24470 by artur-braga
+  (https://github.com/blakeblackshear/frigate/pull/24470). Frigate is MIT
+  licensed.
+
+Not included, and not redistributable here:
+
+- AMD Ryzen AI Software (ryzen_ai-1.7.1.tgz): download it yourself from AMD
+  (AMD account and EULA required).
+- YOLO-NAS model weights and any ONNX model derived from them: the pre-trained
+  weights from Deci are under Deci's own license (no commercial use); export
+  them yourself (see Frigate's YOLO-NAS docs).

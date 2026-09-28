@@ -1,0 +1,17 @@
+# Large or non-redistributable inputs (see NOTICE)
+ryzen_ai-*.tgz
+yolonas_int8/ryzenai_pkg/
+models/
+*.onnx
+# Private data built from your own cameras
+yolonas_int8/data/
+images/
+# Local builds and caches
+.venv/
+llama.cpp/
+.local-deps/
+spirv-headers-src/
+yolonas_int8/vaip_cache/
+__pycache__/
+*.log
+.bench-server.log

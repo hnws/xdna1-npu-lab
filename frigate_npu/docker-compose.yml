@@ -1,0 +1,25 @@
+# NPU detector sidecar for Frigate. Joins Frigate's network so Frigate can
+# reach it at tcp://frigate-npu:5555. Frigate's own compose file is untouched.
+services:
+  frigate-npu:
+    build:
+      context: ..
+      dockerfile: frigate_npu/Dockerfile
+    image: frigate-npu
+    container_name: frigate-npu
+    restart: unless-stopped
+    devices:
+      - /dev/accel/accel0:/dev/accel/accel0
+    ulimits:
+      memlock: -1
+    volumes:
+      - ../models:/models:ro    # yolo_nas_l_320_xint8_adaround.onnx (built by yolonas_int8/)
+      - frigate-npu-cache:/cache
+    networks:
+      - frigate
+networks:
+  frigate:
+    name: frigate_default
+    external: true
+volumes:
+  frigate-npu-cache:

@@ -1,0 +1,8 @@
+# AMD Quark (ONNX quantizer) on the CPU, versions as in Frigate PR #24470.
+FROM python:3.11
+RUN apt-get update && apt-get install --no-install-recommends -y libgl1 libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+COPY --from=ghcr.io/astral-sh/uv:0.10.4 /uv /bin/
+RUN uv pip install --system amd-quark "onnxruntime>=1.20.1,<=1.22.2" opencv-python-headless
+RUN uv pip install --system torch --index-url https://download.pytorch.org/whl/cpu
+RUN python3 -c "import onnxruntime, torch, quark.onnx; print('ort', onnxruntime.__version__, 'torch', torch.__version__)"
